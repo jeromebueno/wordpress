@@ -1,0 +1,26 @@
+version: "3.3"
+services:
+ wordpress:
+  image: wordpress:latest
+  container_name: wordpressjb
+  ports:
+   - 8868:80
+  links:
+    - mariadb:mysql
+  environment:
+    - WORDPRESS_DB_USER=root
+    - WORDPRESS_DB_PASSWORD=root
+
+ phpmyadmin:
+  image: phpmyadmin/phpmyadmin:latest
+  container_name: phpmyadminjb
+  ports:
+   - 8080:80
+  links:
+   - mariadb:db
+
+ mariadb:
+  image: mariadb:latest
+  container_name: mariadbjb
+  environment:
+   - MYSQL_ROOT_PASSWORD=root
