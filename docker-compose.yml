@@ -6,21 +6,21 @@ services:
   ports:
    - 8868:80
   links:
-    - mariadb:mysql
+    - wpmariadb:mysql
   environment:
     - WORDPRESS_DB_USER=root
     - WORDPRESS_DB_PASSWORD=root
 
- phpmyadmin:
+ wpphpmyadmin:
   image: phpmyadmin/phpmyadmin:latest
-  container_name: phpmyadminjb
+  container_name: wpphpmyadmin
   ports:
    - 8080:80
   links:
-   - mariadb:db
+   - wpmariadb:db
 
- mariadb:
+ wpmariadb:
   image: mariadb:latest
-  container_name: mariadbjb
+  container_name: wpmariadb
   environment:
    - MYSQL_ROOT_PASSWORD=root
